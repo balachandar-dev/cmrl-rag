@@ -1,10 +1,10 @@
-import fitz
+import pymupdf
 from pathlib import Path
 from chunker import split_text
 
 PDF_PATH = Path("documents/station_facilities.pdf")
 
-doc = fitz.open(PDF_PATH)
+doc = pymupdf.open(PDF_PATH)
 all_chunks = []
 
 for page_index in range(len(doc)):
