@@ -1,5 +1,5 @@
 import chromadb
-from embedder import embedding
+from embedder import embedding, get_embedding
 from ingest import all_chunks
 
 client = chromadb.PersistentClient(path="../database")
@@ -11,7 +11,7 @@ collection = client.get_or_create_collection(
 result = collection.get()
 
 for index, chunk in enumerate(all_chunks):
-    embedding = embedding(chunk["text"])
+    embedding = get_embedding(chunk["text"])
 
     collection.add(
         ids=[str(index)],
